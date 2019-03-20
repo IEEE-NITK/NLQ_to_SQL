@@ -1,0 +1,1 @@
+{"phase": 1, "question": "How many players are from USA?", "sql": {"conds": [[0, 0, "1998"]], "sel": 1, "agg": 0}, "table_id": "1-10015132-16"}
