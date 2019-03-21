@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NLQ to SQL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div style="text-align: center" class="container jumbotron">
+        <h1>{{ context.id }}</h1>
+        <p>Select a question for the model to work upon</p>
+    </div>
+    {% for question in context.questions %}
+    <div onclick="sendForm('{{ question }}')" class="container jumbotron">
+        <p>{{ question }}</p>
+    </div>
+    {% endfor %}
+    <form style="width :100%" action="/results" method="POST" id="myForm">
+        <input type="hidden" value="{{ context.id }}" name="id">
+        <input type="hidden" name="question" id="myQuestion">
+    </form>
+    <script>
+        var sendForm = (question) => {
+            // event.preventDefault();
+            document.getElementById('myQuestion').value = question;
+            document.getElementById('myForm').submit();
+        }
+    </script>
+</body>
+</html>
